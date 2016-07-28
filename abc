@@ -1,0 +1,42 @@
+#include<stdio.h>
+int bin_search(int low,int high,int num,int arr[])
+{
+    int mid;
+    while(low<=high)
+    {
+        mid = (high+low)/2;
+        if(num == arr[mid])
+            {
+                printf("element=%d,at index=%d",arr[mid],mid);
+                return 1;
+            }
+        else if(num < arr[mid])
+           return bin_search(low,mid-1,num,arr);
+        else if(num > arr[mid])
+            return bin_search(mid+1,high,num,arr);
+    }
+
+        printf("no. not found");
+    return 0;
+
+}
+int main()
+{
+    int f,l,mid,n,i,j,val,num;
+    int a[100];
+    printf("enter size");
+        scanf("%d",&n);
+    printf("enter array");
+    for(i=0;i<n;i++)
+        scanf("%d",&a[i]);
+    for(i=0;i<n;i++)
+        printf("%d\t",a[i]);
+    printf("enter element to search");
+        scanf("%d",&val);
+    f=0;
+    l=n-1;
+    bin_search(f,l,val,a);
+
+    return 0;
+
+}
